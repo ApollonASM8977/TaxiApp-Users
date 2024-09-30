@@ -37,7 +37,11 @@ dependencies:
   firebase_database:
   firebase_storage:
   google_maps_flutter: ^2.2.1
+<<<<<<< HEAD
   geolocator: ^7.0.0
+=======
+  geolocator: ^9.0.2
+>>>>>>> 3d3555fe982aad19d968159fe62b54722650d81c
   flutter_polyline_points: ^1.0.0
 
 

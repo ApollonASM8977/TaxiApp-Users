@@ -39,7 +39,11 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
+<<<<<<< HEAD
             android:value="AIzaSyDCKIksWnSkItVv1wt8w4wOAJ3tTKQAmO0"
+=======
+            android:value="AIzaSyDMoDPzznwLhmXrTzEVivlSjjhjexuG48Q"
+>>>>>>> 3d3555fe982aad19d968159fe62b54722650d81c
             />
     </application>
     <!-- Required to query activities that can process text, see:
