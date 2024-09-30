@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "602300899649",
+    "project_id": "taxi-app-with-admin-304a8",
+    "storage_bucket": "taxi-app-with-admin-304a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602300899649:android:a8a5ad36cb37aaa91501c0",
+        "android_client_info": {
+          "package_name": "com.christopherzoun.taxiusers"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFJJtkQFnYBajzpv8MLL5R5r7JhttLTUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
