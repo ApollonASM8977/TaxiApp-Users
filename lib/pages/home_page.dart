@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:taxi_users/authentication/login_screen.dart'; // Import the login screen
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,32 +12,77 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // Function to handle logout
-  void _logout() {
-    // Navigate back to LoginScreen
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
-    );
+  final Completer<GoogleMapController> googleMapCompleterController =
+      Completer<GoogleMapController>();
+  GoogleMapController? controllerGoogleMap;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkLocationPermission();
+  }
+
+  Future<void> _checkLocationPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, handle appropriately
+        return;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately
+      return;
+    }
+
+    // Permissions are granted, proceed to get location
+    _getCurrentLocation();
+  }
+
+  Future<void> _getCurrentLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+
+      LatLng currentLatLng = LatLng(position.latitude, position.longitude);
+
+      // Update the camera position
+      CameraPosition cameraPosition = CameraPosition(
+        target: currentLatLng,
+        zoom: 16.0,
+      );
+
+      controllerGoogleMap?.animateCamera(
+        CameraUpdate.newCameraPosition(cameraPosition),
+      );
+    } catch (e) {
+      // Handle exceptions
+      print(e);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: const Center(
-        child: Text(
-          "Home Page",
-          style: TextStyle(fontSize: 20, color: Colors.black), // Changed to black for better visibility
-        ),
-      ),
-      // Add a FloatingActionButton to log out
-      floatingActionButton: FloatingActionButton(
-        onPressed: _logout,
-        child: const Icon(Icons.logout),
-        tooltip: 'Logout',
+      body: Stack(
+        children: [
+          GoogleMap(
+            mapType: MapType.normal,
+            myLocationEnabled: true,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(0.0, 0.0), // Default position
+              zoom: 2.0,
+            ),
+            onMapCreated: (GoogleMapController mapController) {
+              controllerGoogleMap = mapController;
+              googleMapCompleterController.complete(controllerGoogleMap);
+              _getCurrentLocation();
+            },
+          ),
+        ],
       ),
     );
   }
