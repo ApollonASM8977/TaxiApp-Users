@@ -1,4 +1,4 @@
-// © 2026 Aboubacar Sidick Meite (ApollonIUGB77) — All Rights Reserved
+﻿// Â© 2026 Aboubacar Sidick Meite (ApollonASM8977) â€” All Rights Reserved
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +69,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
         const SizedBox(height: 16),
         Text('Aucune course pour l\'instant', style: TextStyle(color: Colors.grey[500], fontSize: 16)),
         const SizedBox(height: 8),
-        Text('Vos prochaines courses apparaîtront ici.', style: TextStyle(color: Colors.grey[400], fontSize: 13)),
+        Text('Vos prochaines courses apparaÃ®tront ici.', style: TextStyle(color: Colors.grey[400], fontSize: 13)),
       ]),
     );
   }
@@ -79,7 +79,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
     String dateStr = '';
     if (ts != null) {
       final dt = DateTime.fromMillisecondsSinceEpoch(ts is int ? ts : int.tryParse(ts.toString()) ?? 0);
-      dateStr = DateFormat('dd MMM yyyy · HH:mm', 'fr_FR').format(dt);
+      dateStr = DateFormat('dd MMM yyyy Â· HH:mm', 'fr_FR').format(dt);
     }
 
     return Container(
@@ -100,9 +100,9 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
           if (dateStr.isNotEmpty) Text(dateStr, style: TextStyle(fontSize: 11, color: Colors.grey[500])),
         ]),
         const SizedBox(height: 12),
-        _tripRow(Icons.radio_button_checked, 'Départ', 'Votre position', Colors.green),
+        _tripRow(Icons.radio_button_checked, 'DÃ©part', 'Votre position', Colors.green),
         const Padding(padding: EdgeInsets.only(left: 8), child: SizedBox(height: 16, child: VerticalDivider(color: Colors.grey, width: 1))),
-        _tripRow(Icons.location_on, 'Arrivée', trip['destName'] ?? '', const Color(0xFFDB1702)),
+        _tripRow(Icons.location_on, 'ArrivÃ©e', trip['destName'] ?? '', const Color(0xFFDB1702)),
         const SizedBox(height: 12),
         Row(children: [
           _chip(Icons.route, '${(trip['distanceKm'] ?? 0).toStringAsFixed(1)} km'),
@@ -112,7 +112,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
             decoration: BoxDecoration(color: Colors.green.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
-            child: const Text('Terminée', style: TextStyle(color: Colors.green, fontSize: 11, fontWeight: FontWeight.w600)),
+            child: const Text('TerminÃ©e', style: TextStyle(color: Colors.green, fontSize: 11, fontWeight: FontWeight.w600)),
           ),
         ]),
       ]),
@@ -142,3 +142,4 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
     );
   }
 }
+

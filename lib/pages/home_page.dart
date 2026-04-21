@@ -1,4 +1,4 @@
-// © 2026 Aboubacar Sidick Meite (ApollonIUGB77) — All Rights Reserved
+﻿// Â© 2026 Aboubacar Sidick Meite (ApollonASM8977) â€” All Rights Reserved
 import 'dart:async';
 import 'dart:math';
 
@@ -16,10 +16,10 @@ import '../global/global_var.dart';
 import 'profile_screen.dart';
 import 'trip_history_screen.dart';
 
-// ── Ride state machine ────────────────────────────────────────────────────────
+// â”€â”€ Ride state machine â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 enum RideState { idle, destinationSelected, requesting, driverFound, inTrip, completed }
 
-// ── Ride types ────────────────────────────────────────────────────────────────
+// â”€â”€ Ride types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class RideType {
   final String name;
   final IconData icon;
@@ -42,7 +42,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
-  // ── Map ────────────────────────────────────────────────────────────────────
+  // â”€â”€ Map â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final Completer<GoogleMapController> _mapController = Completer();
   final TextEditingController _destController = TextEditingController();
   final TextEditingController _searchController = TextEditingController();
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Set<Marker>  _markers  = {};
   Set<Polyline> _polylines = {};
 
-  // ── State ──────────────────────────────────────────────────────────────────
+  // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   RideState _rideState   = RideState.idle;
   int _selectedRideType  = 0;
   double _estimatedFare  = 0;
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Timer? _requestTimer;
   late AnimationController _pulseController;
 
-  // ── Init ───────────────────────────────────────────────────────────────────
+  // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   @override
   void initState() {
     super.initState();
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     setState(() => _currentUser = FirebaseAuth.instance.currentUser);
   }
 
-  // ── Location ───────────────────────────────────────────────────────────────
+  // â”€â”€ Location â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _checkLocationPermission() async {
     LocationPermission perm = await Geolocator.checkPermission();
     if (perm == LocationPermission.denied) perm = await Geolocator.requestPermission();
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     } catch (_) { setState(() => _loadingLocation = false); }
   }
 
-  // ── Autocomplete ───────────────────────────────────────────────────────────
+  // â”€â”€ Autocomplete â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<List<Prediction>> _getSuggestions(String input) async {
     if (input.trim().isEmpty) return [];
     final r = await _places.autocomplete(input, language: 'fr');
@@ -140,10 +140,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       _markers = {
         Marker(markerId: const MarkerId('pickup'), position: _currentPosition,
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-          infoWindow: const InfoWindow(title: '📍 Votre position')),
+          infoWindow: const InfoWindow(title: 'ðŸ“ Votre position')),
         Marker(markerId: const MarkerId('destination'), position: dest,
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-          infoWindow: InfoWindow(title: '🏁 ${detail.result.name}')),
+          infoWindow: InfoWindow(title: 'ðŸ ${detail.result.name}')),
       };
     });
 
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     ctrl.animateCamera(CameraUpdate.newLatLngBounds(bounds, 80));
   }
 
-  // ── Fare estimation ────────────────────────────────────────────────────────
+  // â”€â”€ Fare estimation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _calculateFare() {
     if (_destinationPosition == null) return;
     final distM = Geolocator.distanceBetween(
@@ -185,7 +185,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     });
   }
 
-  // ── Request ride ───────────────────────────────────────────────────────────
+  // â”€â”€ Request ride â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _requestRide() {
     setState(() => _rideState = RideState.requesting);
 
@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void _onDriverFound() {
-    final names  = ['Kouamé A.', 'Diallo S.', 'Koné B.', 'Traoré M.', 'Bamba K.'];
+    final names  = ['KouamÃ© A.', 'Diallo S.', 'KonÃ© B.', 'TraorÃ© M.', 'Bamba K.'];
     final plates = ['CI-4521-AB', 'CI-2367-CD', 'CI-8810-EF', 'CI-1234-GH'];
     final r = Random();
     setState(() {
@@ -233,7 +233,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _getCurrentLocation();
   }
 
-  // ── Firebase ───────────────────────────────────────────────────────────────
+  // â”€â”€ Firebase â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _saveTripToFirebase() {
     if (_currentUser == null || _destinationPosition == null) return;
     final db = FirebaseDatabase.instance.ref('trips/${_currentUser!.uid}').push();
@@ -258,14 +258,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     // In a real app we'd update the specific trip document
   }
 
-  // ── Sign out ───────────────────────────────────────────────────────────────
+  // â”€â”€ Sign out â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
     if (!mounted) return;
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
   }
 
-  // ── Build ──────────────────────────────────────────────────────────────────
+  // â”€â”€ Build â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -282,7 +282,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Map ────────────────────────────────────────────────────────────────────
+  // â”€â”€ Map â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildMap() {
     return GoogleMap(
       mapType: MapType.normal,
@@ -306,7 +306,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Top bar ────────────────────────────────────────────────────────────────
+  // â”€â”€ Top bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildTopBar() {
     return Positioned(
       top: MediaQuery.of(context).padding.top + 8,
@@ -327,7 +327,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(color: const Color(0xFFDB1702), borderRadius: BorderRadius.circular(20)),
-            child: const Text('🚖 CommuTaxi', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15)),
+            child: const Text('ðŸš– CommuTaxi', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15)),
           ),
           const Spacer(),
           // Recenter
@@ -344,7 +344,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Search bar (idle state) ────────────────────────────────────────────────
+  // â”€â”€ Search bar (idle state) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildSearchBar() {
     return Positioned(
       bottom: 20, left: 16, right: 16,
@@ -356,7 +356,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Où allez-vous ?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey[800])),
+              Text('OÃ¹ allez-vous ?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey[800])),
               const SizedBox(height: 12),
               Row(
                 children: [
@@ -390,7 +390,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       onSuggestionSelected: _selectDestination,
                       noItemsFoundBuilder: (ctx) => const Padding(
                         padding: EdgeInsets.all(12),
-                        child: Text('Aucun résultat', style: TextStyle(fontSize: 13)),
+                        child: Text('Aucun rÃ©sultat', style: TextStyle(fontSize: 13)),
                       ),
                     ),
                   ),
@@ -403,7 +403,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Bottom panel (all states except idle) ──────────────────────────────────
+  // â”€â”€ Bottom panel (all states except idle) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildBottomPanel() {
     if (_rideState == RideState.idle) return const SizedBox.shrink();
     return Positioned(
@@ -422,7 +422,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Panel: destination selected → choose ride type + fare ─────────────────
+  // â”€â”€ Panel: destination selected â†’ choose ride type + fare â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildDestinationPanel() {
     return _panel(
       child: Column(
@@ -491,7 +491,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             child: ElevatedButton(
               onPressed: _requestRide,
               style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFDB1702), foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 14), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              child: Text('Commander — ${_estimatedFare.toInt()} FCFA', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+              child: Text('Commander â€” ${_estimatedFare.toInt()} FCFA', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
             ),
           ),
           TextButton(onPressed: _resetRide, child: const Text('Annuler', style: TextStyle(color: Colors.grey))),
@@ -500,7 +500,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Panel: searching driver ────────────────────────────────────────────────
+  // â”€â”€ Panel: searching driver â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildRequestingPanel() {
     return _panel(
       child: Column(
@@ -532,7 +532,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Panel: driver found ────────────────────────────────────────────────────
+  // â”€â”€ Panel: driver found â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildDriverFoundPanel() {
     return _panel(
       child: Column(
@@ -547,7 +547,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Text(_driverName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               Row(children: [
                 const Icon(Icons.star, color: Colors.amber, size: 14),
-                Text(' ${_driverRating.toStringAsFixed(1)}  •  $_driverPlate', style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+                Text(' ${_driverRating.toStringAsFixed(1)}  â€¢  $_driverPlate', style: TextStyle(fontSize: 12, color: Colors.grey[600])),
               ]),
             ])),
             Column(children: [
@@ -562,7 +562,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Row(children: [
             const Icon(Icons.access_time, color: Color(0xFFDB1702), size: 18),
             const SizedBox(width: 6),
-            Text('Arrivée dans $_driverEta min', style: const TextStyle(fontWeight: FontWeight.w600)),
+            Text('ArrivÃ©e dans $_driverEta min', style: const TextStyle(fontWeight: FontWeight.w600)),
             const Spacer(),
             _statChip(Icons.flag, _destinationName, maxWidth: 140),
           ]),
@@ -572,7 +572,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             child: ElevatedButton(
               onPressed: _startTrip,
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 12), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              child: const Text('Démarrer le trajet', style: TextStyle(fontWeight: FontWeight.bold)),
+              child: const Text('DÃ©marrer le trajet', style: TextStyle(fontWeight: FontWeight.bold)),
             ),
           ),
         ],
@@ -580,7 +580,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Panel: in trip ────────────────────────────────────────────────────────
+  // â”€â”€ Panel: in trip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildInTripPanel() {
     return _panel(
       color: const Color(0xFF1A1A2E),
@@ -609,7 +609,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             child: ElevatedButton(
               onPressed: _completeTrip,
               style: ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent, foregroundColor: Colors.black, padding: const EdgeInsets.symmetric(vertical: 12), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              child: const Text('Arrivé à destination', style: TextStyle(fontWeight: FontWeight.bold)),
+              child: const Text('ArrivÃ© Ã  destination', style: TextStyle(fontWeight: FontWeight.bold)),
             ),
           ),
         ],
@@ -617,7 +617,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Panel: completed ─────────────────────────────────────────────────────
+  // â”€â”€ Panel: completed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildCompletedPanel() {
     return _panel(
       child: Column(
@@ -626,16 +626,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           _panelHandle(),
           const Icon(Icons.check_circle, color: Colors.green, size: 56),
           const SizedBox(height: 8),
-          const Text('Trajet terminé !', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+          const Text('Trajet terminÃ© !', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
           const SizedBox(height: 4),
-          Text('${_estimatedFare.toInt()} FCFA · ${_estimatedKm.toStringAsFixed(1)} km · $_destinationName',
+          Text('${_estimatedFare.toInt()} FCFA Â· ${_estimatedKm.toStringAsFixed(1)} km Â· $_destinationName',
             style: TextStyle(color: Colors.grey[600], fontSize: 12), textAlign: TextAlign.center),
           const SizedBox(height: 16),
           Row(children: [
             Expanded(child: OutlinedButton.icon(
               onPressed: () {},
               icon: const Icon(Icons.star_border, color: Color(0xFFDB1702)),
-              label: const Text('Évaluer', style: TextStyle(color: Color(0xFFDB1702))),
+              label: const Text('Ã‰valuer', style: TextStyle(color: Color(0xFFDB1702))),
               style: OutlinedButton.styleFrom(side: const BorderSide(color: Color(0xFFDB1702)), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
             )),
             const SizedBox(width: 10),
@@ -650,7 +650,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Drawer ────────────────────────────────────────────────────────────────
+  // â”€â”€ Drawer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildDrawer() {
     return Drawer(
       child: Column(
@@ -673,16 +673,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Navigator.pop(context);
             Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfileScreen()));
           }),
-          _drawerItem(Icons.settings, 'Paramètres', () {
+          _drawerItem(Icons.settings, 'ParamÃ¨tres', () {
             Navigator.pop(context);
             Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsPage()));
           }),
           const Divider(),
-          _drawerItem(Icons.logout, 'Déconnexion', _signOut, color: Colors.red),
+          _drawerItem(Icons.logout, 'DÃ©connexion', _signOut, color: Colors.red),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Text('© 2026 ASM', style: TextStyle(fontSize: 11, color: Colors.grey[400])),
+            child: Text('Â© 2026 ASM', style: TextStyle(fontSize: 11, color: Colors.grey[400])),
           ),
         ],
       ),
@@ -697,7 +697,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
+  // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _panel({required Widget child, Color color = Colors.white}) {
     return Container(
       decoration: BoxDecoration(color: color, borderRadius: const BorderRadius.vertical(top: Radius.circular(20)), boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12, offset: const Offset(0, -4))]),
@@ -723,3 +723,4 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 }
+

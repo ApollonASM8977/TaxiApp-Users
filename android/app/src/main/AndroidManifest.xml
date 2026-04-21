@@ -39,9 +39,11 @@
             android:value="2"
             />
 
+        <!-- ⚠ Replace YOUR_GOOGLE_MAPS_API_KEY with your own key from Google Cloud Console.
+             Add it to android/local.properties (gitignored) and reference it here. -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDCKIksWnSkItVv1wt8w4wOAJ3tTKQAmO0"
+            android:value="YOUR_GOOGLE_MAPS_API_KEY"
             />
     </application>
     <!-- Required to query activities that can process text, see:
