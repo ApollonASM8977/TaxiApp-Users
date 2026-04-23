@@ -140,10 +140,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       _markers = {
         Marker(markerId: const MarkerId('pickup'), position: _currentPosition,
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-          infoWindow: const InfoWindow(title: 'ðŸ“ Votre position')),
+          infoWindow: const InfoWindow(title: '📍 Votre position')),
         Marker(markerId: const MarkerId('destination'), position: dest,
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-          infoWindow: InfoWindow(title: 'ðŸ ${detail.result.name}')),
+          infoWindow: InfoWindow(title: '🏁 ${detail.result.name}')),
       };
     });
 
@@ -327,7 +327,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(color: const Color(0xFFDB1702), borderRadius: BorderRadius.circular(20)),
-            child: const Text('ðŸš– CommuTaxi', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15)),
+            child: const Text('🚖 CommuTaxi', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15)),
           ),
           const Spacer(),
           // Recenter
@@ -635,7 +635,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Expanded(child: OutlinedButton.icon(
               onPressed: () {},
               icon: const Icon(Icons.star_border, color: Color(0xFFDB1702)),
-              label: const Text('Ã‰valuer', style: TextStyle(color: Color(0xFFDB1702))),
+              label: const Text('Évaluer', style: TextStyle(color: Color(0xFFDB1702))),
               style: OutlinedButton.styleFrom(side: const BorderSide(color: Color(0xFFDB1702)), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
             )),
             const SizedBox(width: 10),

@@ -12,20 +12,20 @@
 
 ---
 
-## ðŸ“± Features
+## 📱 Features
 
 | Feature | Description |
 |---------|-------------|
-| ðŸ“ž **Phone Auth** | OTP verification via Firebase Auth (multi-country, default +225 ðŸ‡¨ðŸ‡®) |
-| ðŸ—ºï¸ **Live Map** | Google Maps with real-time GPS position |
-| ðŸ“ **Location Search** | Places autocomplete (Google Maps API) |
+| 📞 **Phone Auth** | OTP verification via Firebase Auth (multi-country, default +225 🇨🇮) |
+| 🗺️ **Live Map** | Google Maps with real-time GPS position |
+| 📍 **Location Search** | Places autocomplete (Google Maps API) |
 | 🔒 **Signup / Login** | Secure user registration with phone number |
-| âš™ï¸ **Settings** | User preferences and profile management |
-| ðŸŒ **Connectivity Check** | Graceful offline handling |
+| ⚙️ **Settings** | User preferences and profile management |
+| 🌐 **Connectivity Check** | Graceful offline handling |
 
 ---
 
-## ðŸ—ï¸ Structure
+## 🏗️ Structure
 
 ```
 lib/
@@ -47,7 +47,7 @@ lib/
 
 ---
 
-## âš™ï¸ Setup
+## ⚙️ Setup
 
 ### 1. Firebase
 
@@ -66,7 +66,7 @@ class GlobalVar {
 }
 ```
 
-> ⚠ï¸ **Never commit your real API keys.** Both `google-services.json` and `global_var.dart` are in `.gitignore`.
+> ⚠️ **Never commit your real API keys.** Both `google-services.json` and `global_var.dart` are in `.gitignore`.
 
 ### 3. Run
 
@@ -77,7 +77,7 @@ flutter run
 
 ---
 
-## ðŸ› ï¸ Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -93,7 +93,7 @@ flutter run
 ## Author
 
 **Aboubacar Sidick Meite** — [@ApollonASM8977](https://github.com/ApollonASM8977)  
-M.S. Cybersecurity Â· Montclair State University
+M.S. Cybersecurity · Montclair State University
 
 ---
 

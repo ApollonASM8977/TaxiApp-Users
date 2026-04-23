@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(children: [
                 // Stats
                 Row(children: [
-                  Expanded(child: _statCard('ðŸš—', 'Courses', '$_totalTrips')),
+                  Expanded(child: _statCard('🚗', 'Courses', '$_totalTrips')),
                   const SizedBox(width: 12),
                   Expanded(child: _statCard('💰', 'Total dépensé', '${_totalSpent.toInt()} FCFA')),
                 ]),
