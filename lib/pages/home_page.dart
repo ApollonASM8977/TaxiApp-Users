@@ -1,4 +1,4 @@
-﻿// Â© 2026 Aboubacar Sidick Meite (ApollonASM8977) â€” All Rights Reserved
+﻿// © 2026 Aboubacar Sidick Meite (ApollonASM8977) — All Rights Reserved
 import 'dart:async';
 import 'dart:math';
 
@@ -491,7 +491,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             child: ElevatedButton(
               onPressed: _requestRide,
               style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFDB1702), foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 14), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              child: Text('Commander â€” ${_estimatedFare.toInt()} FCFA', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+              child: Text('Commander — ${_estimatedFare.toInt()} FCFA', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
             ),
           ),
           TextButton(onPressed: _resetRide, child: const Text('Annuler', style: TextStyle(color: Colors.grey))),
@@ -547,7 +547,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Text(_driverName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               Row(children: [
                 const Icon(Icons.star, color: Colors.amber, size: 14),
-                Text(' ${_driverRating.toStringAsFixed(1)}  â€¢  $_driverPlate', style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+                Text(' ${_driverRating.toStringAsFixed(1)}  •  $_driverPlate', style: TextStyle(fontSize: 12, color: Colors.grey[600])),
               ]),
             ])),
             Column(children: [
@@ -628,7 +628,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           const SizedBox(height: 8),
           const Text('Trajet terminÃ© !', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
           const SizedBox(height: 4),
-          Text('${_estimatedFare.toInt()} FCFA Â· ${_estimatedKm.toStringAsFixed(1)} km Â· $_destinationName',
+          Text('${_estimatedFare.toInt()} FCFA · ${_estimatedKm.toStringAsFixed(1)} km · $_destinationName',
             style: TextStyle(color: Colors.grey[600], fontSize: 12), textAlign: TextAlign.center),
           const SizedBox(height: 16),
           Row(children: [
@@ -682,7 +682,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Text('Â© 2026 ASM', style: TextStyle(fontSize: 11, color: Colors.grey[400])),
+            child: Text('© 2026 ASM', style: TextStyle(fontSize: 11, color: Colors.grey[400])),
           ),
         ],
       ),

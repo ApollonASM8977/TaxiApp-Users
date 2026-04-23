@@ -1,4 +1,4 @@
-﻿// Â© 2026 Aboubacar Sidick Meite (ApollonASM8977) â€” All Rights Reserved
+﻿// © 2026 Aboubacar Sidick Meite (ApollonASM8977) — All Rights Reserved
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_users/authentication/login_screen.dart';

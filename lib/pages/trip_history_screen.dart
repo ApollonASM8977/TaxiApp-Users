@@ -1,4 +1,4 @@
-﻿// Â© 2026 Aboubacar Sidick Meite (ApollonASM8977) â€” All Rights Reserved
+﻿// © 2026 Aboubacar Sidick Meite (ApollonASM8977) — All Rights Reserved
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +79,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
     String dateStr = '';
     if (ts != null) {
       final dt = DateTime.fromMillisecondsSinceEpoch(ts is int ? ts : int.tryParse(ts.toString()) ?? 0);
-      dateStr = DateFormat('dd MMM yyyy Â· HH:mm', 'fr_FR').format(dt);
+      dateStr = DateFormat('dd MMM yyyy · HH:mm', 'fr_FR').format(dt);
     }
 
     return Container(
