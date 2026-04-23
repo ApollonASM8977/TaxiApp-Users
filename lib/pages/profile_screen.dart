@@ -77,19 +77,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(children: [
                   Expanded(child: _statCard('ðŸš—', 'Courses', '$_totalTrips')),
                   const SizedBox(width: 12),
-                  Expanded(child: _statCard('ðŸ’°', 'Total dÃ©pensÃ©', '${_totalSpent.toInt()} FCFA')),
+                  Expanded(child: _statCard('💰', 'Total dépensé', '${_totalSpent.toInt()} FCFA')),
                 ]),
                 const SizedBox(height: 20),
                 // Account info
                 _section('Informations du compte', [
-                  _infoTile(Icons.phone, 'TÃ©lÃ©phone', _user?.phoneNumber ?? 'Non renseignÃ©'),
-                  _infoTile(Icons.email_outlined, 'Email', _user?.email ?? 'Non renseignÃ©'),
-                  _infoTile(Icons.verified_user_outlined, 'Statut', _user?.emailVerified == true ? 'VÃ©rifiÃ©' : 'Non vÃ©rifiÃ©'),
+                  _infoTile(Icons.phone, 'Téléphone', _user?.phoneNumber ?? 'Non renseigné'),
+                  _infoTile(Icons.email_outlined, 'Email', _user?.email ?? 'Non renseigné'),
+                  _infoTile(Icons.verified_user_outlined, 'Statut', _user?.emailVerified == true ? 'Vérifié' : 'Non vérifié'),
                 ]),
                 const SizedBox(height: 16),
-                _section('PrÃ©fÃ©rences', [
-                  _infoTile(Icons.language, 'Langue', 'FranÃ§ais'),
-                  _infoTile(Icons.payments, 'Paiement', 'EspÃ¨ces / Mobile Money'),
+                _section('Préférences', [
+                  _infoTile(Icons.language, 'Langue', 'Français'),
+                  _infoTile(Icons.payments, 'Paiement', 'Espèces / Mobile Money'),
                 ]),
               ]),
             ),

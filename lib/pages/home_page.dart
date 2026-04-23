@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void _onDriverFound() {
-    final names  = ['KouamÃ© A.', 'Diallo S.', 'KonÃ© B.', 'TraorÃ© M.', 'Bamba K.'];
+    final names  = ['Kouamé A.', 'Diallo S.', 'Koné B.', 'Traoré M.', 'Bamba K.'];
     final plates = ['CI-4521-AB', 'CI-2367-CD', 'CI-8810-EF', 'CI-1234-GH'];
     final r = Random();
     setState(() {
@@ -356,7 +356,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('OÃ¹ allez-vous ?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey[800])),
+              Text('Où allez-vous ?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey[800])),
               const SizedBox(height: 12),
               Row(
                 children: [
@@ -390,7 +390,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       onSuggestionSelected: _selectDestination,
                       noItemsFoundBuilder: (ctx) => const Padding(
                         padding: EdgeInsets.all(12),
-                        child: Text('Aucun rÃ©sultat', style: TextStyle(fontSize: 13)),
+                        child: Text('Aucun résultat', style: TextStyle(fontSize: 13)),
                       ),
                     ),
                   ),
@@ -422,7 +422,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  // ── Panel: destination selected â†’ choose ride type + fare ─────────────────
+  // ── Panel: destination selected ↑ choose ride type + fare ─────────────────
   Widget _buildDestinationPanel() {
     return _panel(
       child: Column(
@@ -562,7 +562,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Row(children: [
             const Icon(Icons.access_time, color: Color(0xFFDB1702), size: 18),
             const SizedBox(width: 6),
-            Text('ArrivÃ©e dans $_driverEta min', style: const TextStyle(fontWeight: FontWeight.w600)),
+            Text('Arrivée dans $_driverEta min', style: const TextStyle(fontWeight: FontWeight.w600)),
             const Spacer(),
             _statChip(Icons.flag, _destinationName, maxWidth: 140),
           ]),
@@ -572,7 +572,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             child: ElevatedButton(
               onPressed: _startTrip,
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 12), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              child: const Text('DÃ©marrer le trajet', style: TextStyle(fontWeight: FontWeight.bold)),
+              child: const Text('Démarrer le trajet', style: TextStyle(fontWeight: FontWeight.bold)),
             ),
           ),
         ],
@@ -609,7 +609,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             child: ElevatedButton(
               onPressed: _completeTrip,
               style: ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent, foregroundColor: Colors.black, padding: const EdgeInsets.symmetric(vertical: 12), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              child: const Text('ArrivÃ© Ã  destination', style: TextStyle(fontWeight: FontWeight.bold)),
+              child: const Text('Arrivé à destination', style: TextStyle(fontWeight: FontWeight.bold)),
             ),
           ),
         ],
@@ -626,7 +626,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           _panelHandle(),
           const Icon(Icons.check_circle, color: Colors.green, size: 56),
           const SizedBox(height: 8),
-          const Text('Trajet terminÃ© !', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+          const Text('Trajet terminé !', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
           const SizedBox(height: 4),
           Text('${_estimatedFare.toInt()} FCFA · ${_estimatedKm.toStringAsFixed(1)} km · $_destinationName',
             style: TextStyle(color: Colors.grey[600], fontSize: 12), textAlign: TextAlign.center),
@@ -673,12 +673,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Navigator.pop(context);
             Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfileScreen()));
           }),
-          _drawerItem(Icons.settings, 'ParamÃ¨tres', () {
+          _drawerItem(Icons.settings, 'Paramètres', () {
             Navigator.pop(context);
             Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsPage()));
           }),
           const Divider(),
-          _drawerItem(Icons.logout, 'DÃ©connexion', _signOut, color: Colors.red),
+          _drawerItem(Icons.logout, 'Déconnexion', _signOut, color: Colors.red),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16),
